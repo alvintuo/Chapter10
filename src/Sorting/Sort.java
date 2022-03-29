@@ -1,11 +1,12 @@
 package Sorting;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Sort {
 
     public Sort() {}
     // selectionSort doest not work and I'm not sure why... please fix!
-    public void selectionSort(int [] arr) {     // Sort a[0], ..., a[size-1] in ascending order.
+    public void selectionSort(int[] arr) {     // Sort a[0], ..., a[size-1] in ascending order.
         int i, iMax, n;
         int aTemp;
         for (n = arr.length; n >= 2; n--) {     // Find the index "iMax" of the largest element among a[0], ..., a[n-1]:
@@ -21,7 +22,7 @@ public class Sort {
         }
     }
 
-    public void insertionSort(int [] arr) {         // Sort a[0], ..., a[size-1] in ascending order.
+    public void insertionSort(int[] arr) {         // Sort a[0], ..., a[size-1] in ascending order.
         int key, position;
         for (int n = 1; n < arr.length; n++) {
             key = arr[n];                           // Save next element to be inserted
@@ -34,6 +35,28 @@ public class Sort {
         }                                           // Increment n ( n++ of for loop)
     }
 
+    public Object[] arraySort(int[] importedArray) {
+        ArrayList<Integer> unsorted = new ArrayList<>();
+        ArrayList<Integer> sorted = new ArrayList<>();
+        for (int i = 0; i < importedArray.length; i++) {
+            unsorted.add(importedArray[i]);
+        }
+        int size = unsorted.size();
+        for (int i = 0; i < size; i++) {
+            int min = Integer.MAX_VALUE;
+            int index = 0;
+            for (int j = 0; j < unsorted.size(); j++) {
+                if (unsorted.get(j) < min) {
+                    min = unsorted.get(j);
+                    index = j;
+                }
+            }
+            unsorted.remove(index);
+            sorted.add(min);
+        }
+        return sorted.toArray();
+    }
+
     public static void main(String[] args) {
         int[] testArray = new int[20];
 
@@ -42,9 +65,7 @@ public class Sort {
         }
         System.out.println(Arrays.toString(testArray));
         Sort array = new Sort();
-        array.insertionSort(testArray);
-        System.out.println(Arrays.toString(testArray));
-
+        System.out.println(Arrays.toString(array.arraySort(testArray)));
 
     }
 
