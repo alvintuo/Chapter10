@@ -58,7 +58,7 @@ public class Sort {
     }
 
     public static void main(String[] args) {
-        int[] testArray = new int[20];
+        int[] testArray = new int[30];
 
         for (int i = 0; i < testArray.length; i++) {
             testArray[i] = (int) (Math.random() * 100);
@@ -66,8 +66,5 @@ public class Sort {
         System.out.println(Arrays.toString(testArray));
         Sort array = new Sort();
         System.out.println(Arrays.toString(array.arraySort(testArray)));
-
     }
-
-
 }
